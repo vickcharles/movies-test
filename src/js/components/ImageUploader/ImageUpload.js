@@ -1,28 +1,27 @@
 import React from "react";
+import { Button, Avatar, Grid } from "@material-ui/core";
 
 class ImageUpload extends React.Component {
   constructor(props) {
     super(props);
+    this.textInput = React.createRef();
     this.state = {
-      file: "",
-      imagePreviewUrl: ""
+      file: ""
     };
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
-  };
+  reader = new FileReader();
 
   getBase64(file, cb) {
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      cb(reader.result);
+    this.reader.readAsDataURL(file);
+    this.reader.onload = () => {
+      cb(this.reader.result);
     };
-    reader.onerror = (error) => console.err("Error: ", error);
+    this.reader.onerror = error => console.err("Error: ", error);
   }
 
   handleImageChange = e => {
+    console.log(e.target.files);
     e.preventDefault();
     let file = e.target.files[0];
 
@@ -30,21 +29,44 @@ class ImageUpload extends React.Component {
       this.setState({
         file: result
       });
-      console.log(result);
+       this.props.image(result)
     });
   };
 
-  render() {
-    let { imagePreviewUrl } = this.state;
-    let $imagePreview = null;
-    if (imagePreviewUrl) {
-      $imagePreview = <img src={imagePreviewUrl} alt="uploader" />;
-    }
+  openFile = () => {
+    this.textInput.current.click();
+  };
 
+  render() {
     return (
       <div>
-        <input type="file" onChange={this.handleImageChange} />
-        {$imagePreview}
+        <input
+          ref={this.textInput}
+          type="file"
+          onChange={this.handleImageChange}
+          accept="image/x-png,image/gif,image/jpeg"
+          style={{ display: "none" }}
+        />
+
+        <div>
+          {!this.state.file && (
+            <Button onClick={this.openFile} variant="contained">
+              UPLOAD IMAGE
+            </Button>
+          )}
+          <Grid xs={12} md={9}>
+            {this.state.file && (
+              <Avatar
+                alt="Remy Sharp"
+                src={this.state.file}
+                style={{
+                  width: "130px",
+                  height: "130px"
+                }}
+              />
+            )}
+          </Grid>
+        </div>
       </div>
     );
   }
