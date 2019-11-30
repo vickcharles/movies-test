@@ -4,6 +4,7 @@ import "../../../assets/sass/moviesList.sass";
 import { TextField, Grid, Button } from "@material-ui/core";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import ImageUpload from "../ImageUploader/ImageUpload"
 
 const AddMovieForm = () => {
   return (
@@ -34,6 +35,9 @@ const AddMovieForm = () => {
               showPopperArrow={false}
               placeholderText="Relase date"
             />
+          </Grid>
+          <Grid item md={12}>
+            <ImageUpload />
           </Grid>
           <Grid item md={12} style={{ textAlign: "right" }}>
             <Button variant="contained" color="primary">
