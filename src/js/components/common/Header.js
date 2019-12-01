@@ -18,7 +18,7 @@ const Header = () => {
           <Typography variant="h6" className="title">
             The Movies App
           </Typography>
-          <div class="nav">
+          <div className="nav">
             <Link to="/">
               <Button color="inherit">Home</Button>
             </Link>
