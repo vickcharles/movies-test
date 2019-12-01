@@ -59,7 +59,14 @@ function getTop5Movies() {
     type: moviesConstants.SET_TOP_5_MOVIES,
     movies
   });
+
+  const setTop5MoviesRequest = () => ({
+    type: moviesConstants.SET_TOP_5_MOVIES_REQUEST,
+  });
+
+
   return dispatch => {
+    dispatch(setTop5MoviesRequest());
     moviesService.getTop5().then(res => {
       dispatch(setTop5Movies(res.data.movies));
     });

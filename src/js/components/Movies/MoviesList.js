@@ -6,13 +6,13 @@ import MovieItem from "./MovieItem";
 import "../../../assets/sass/moviesList.sass";
 import SectionTitle from "../common/SectionTitle";
 
-const MoviesList = (props) => {
+const MoviesList = props => {
   return (
     <div className="movie-list-wrapper">
       {props.showTitle && <SectionTitle text="Movies" />}
       <List className="movies-list">
-        {props.movies.map(movie => (
-          <MovieItem movie={movie} action={props.onlyView}/>
+        {(props.movies.length === 0 ? Array.from(new Array(4)) : props.movies).map(movie => (
+          <MovieItem movie={movie} action={props.onlyView} />
         ))}
       </List>
     </div>
@@ -21,6 +21,6 @@ const MoviesList = (props) => {
 
 MoviesList.defaultProps = {
   showTitle: true
-}
+};
 
 export default MoviesList;

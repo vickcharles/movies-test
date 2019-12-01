@@ -1,4 +1,5 @@
 @import './variable.sass'
+@import './utils/mixins.sass'
 
 .header
   background-color: #24292e !important
@@ -19,3 +20,14 @@ a
 
   &:hover
     color: #f3f3f3
+
+.MuiButton-label
+  font-size: 10px !important
+  @include for-tablet-landscape-up
+    font-size: 13px !important
+
+.title
+  font-size: 12px !important
+
+  @include for-tablet-landscape-up
+    font-size: 18px !important

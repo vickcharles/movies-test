@@ -14,13 +14,13 @@ const SingleMovie = () => {
         </div>
       </Grid>
       <Grid container className="mt-small">
-        <Grid xs="4">
+        <Grid xs="12" md={4}>
           <Avatar
             className="avatar"
             src={selectedMovie.image}
           />
         </Grid>
-        <Grid xs="8">
+        <Grid xs="12" md={8}>
           <Typography>Description</Typography>
           <Typography variant="subtitle1" gutterBottom>
             {selectedMovie.description}

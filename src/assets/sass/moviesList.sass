@@ -1,8 +1,13 @@
 @import './variable.sass'
+@import './utils/mixins.sass'
 
 .movies-list
-  height: 100vh !important
+  height: auto !important
   overflow-y: auto !important
+
+  @include for-tablet-landscape-up
+    height: 100vh !important
+    overflow-y: auto !important
 
 .movie-item
   border-radius: 9px !important

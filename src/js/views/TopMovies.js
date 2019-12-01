@@ -14,6 +14,7 @@ const TopMovies = () => {
     dispatch(getTop5Movies());
   }, [dispatch]);
 
+
   console.log(movies);
   return (
     <Container>
