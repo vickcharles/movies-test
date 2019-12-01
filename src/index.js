@@ -5,6 +5,9 @@ import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 
 import { store } from "./js/helpers/store";
+import { configureFakeAPI } from "./js/helpers/fake-api";
+
+configureFakeAPI();
 
 ReactDOM.render(
   <Provider store={store}>
