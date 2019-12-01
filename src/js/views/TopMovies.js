@@ -1,10 +1,12 @@
 import React from "react";
+import { Container } from "@material-ui/core";
+import PageTitle from "../components/common/PageTitle"
 
 const TopMovies = () => {
   return (
-    <div>
-      <h1>top 5 best</h1>
-    </div>
+    <Container>
+      <PageTitle text="TOP 5 MOVIES"/>
+    </Container>
   );
 };
 
