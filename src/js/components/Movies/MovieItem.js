@@ -30,7 +30,7 @@ const MovieItem = ({ movie }) => {
       <ListItemAvatar>
         <Avatar src={movie.image} />
       </ListItemAvatar>
-      <ListItemText primary={movie.title} secondary={movie.relaseDate} />
+      <ListItemText className="item-title" primary={movie.title} secondary={movie.relaseDate} />
       { isMovieSelected && <ListItemSecondaryAction>
         <IconButton
           edge="end"
