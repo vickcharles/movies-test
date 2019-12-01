@@ -30,7 +30,7 @@ export const movies = (state = initialState, action) => {
     case moviesConstants.ADD_MOVIE:
       return {
         movies: [...state.movies, action.movie],
-        selectedMovie: {}
+        selectedMovie: action.movie
       };
     case moviesConstants.DELETE_MOVIE:
       return {

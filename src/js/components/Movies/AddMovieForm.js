@@ -5,6 +5,10 @@ import { TextField, Grid, Button } from "@material-ui/core";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ImageUpload from "../ImageUploader/ImageUpload";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { moviesActions } from "../../actions/movies.actions";
+import moment from "moment";
 
 class AddMovieForm extends React.Component {
   constructor(props) {
@@ -13,7 +17,8 @@ class AddMovieForm extends React.Component {
       name: "",
       description: "",
       relaseDate: "",
-      image: ""
+      image: "",
+      react: true
     };
   }
 
@@ -41,7 +46,17 @@ class AddMovieForm extends React.Component {
   }
 
   onSaveMovie = () => {
-    console.log(this.state);
+    const movieToAdd = {
+      id: '_' + Math.random().toString(36).substr(2, 9),
+      title: this.state.title,
+      description: this.state.description,
+      relaseDate: moment(this.state.relaseDate.toString()).format("MMM Do YY"),
+      image: this.state.image
+    };
+    this.props.addMovie(movieToAdd);
+    this.setState({
+      redirect: true
+    });
   };
 
   render() {
@@ -95,9 +110,23 @@ class AddMovieForm extends React.Component {
             </Grid>
           </Grid>
         </form>
+        {this.state.redirect && <Redirect to="/" />}
       </div>
     );
   }
 }
 
-export default AddMovieForm;
+const mapDispatchToProps = dispatch => {
+  const { addMovie } = moviesActions;
+
+  return {
+    addMovie: movie => {
+      dispatch(addMovie(movie));
+    }
+  };
+};
+
+export default AddMovieForm = connect(
+  () => ({}),
+  mapDispatchToProps
+)(AddMovieForm);
