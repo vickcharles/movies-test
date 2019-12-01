@@ -4,7 +4,7 @@ import { Typography, Avatar, Grid } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
 const SingleMovie = () => {
-  const selectedMovie = useSelector(state => state.movies.selectedMovie);
+  const selectedMovie = useSelector(state => state.movies.selectedMovie) || {}
   return (
     <Grid class="single-movie">
       <Grid>

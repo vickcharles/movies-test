@@ -5,20 +5,22 @@ import { List } from "@material-ui/core";
 import MovieItem from "./MovieItem";
 import "../../../assets/sass/moviesList.sass";
 import SectionTitle from "../common/SectionTitle";
-import { useSelector } from "react-redux";
 
-const MoviesList = () => {
-  const movies = useSelector(state => state.movies.movies);
+const MoviesList = (props) => {
   return (
     <div className="movie-list-wrapper">
-      <SectionTitle text="Movies" />
+      {props.showTitle && <SectionTitle text="Movies" />}
       <List className="movies-list">
-        {movies.map(movie => (
-          <MovieItem movie={movie} />
+        {props.movies.map(movie => (
+          <MovieItem movie={movie} action={props.onlyView}/>
         ))}
       </List>
     </div>
   );
 };
+
+MoviesList.defaultProps = {
+  showTitle: true
+}
 
 export default MoviesList;

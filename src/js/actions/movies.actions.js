@@ -4,6 +4,7 @@ import { moviesService } from "../services/movies.service";
 export const moviesActions = {
   addMovie,
   deleteMovie,
+  getTop5Movies,
   selectMovie,
   getAllMovies
 };
@@ -22,14 +23,14 @@ function addMovie(movie) {
 }
 
 function getAllMovies() {
-  const setMovies = (movies) => ({
+  const setMovies = movies => ({
     type: moviesConstants.SET_MOVIES,
     movies
   });
 
   return dispatch => {
     moviesService.getAllMovies().then(res => {
-      dispatch(setMovies(res.movies))
+      dispatch(setMovies(res.movies));
     });
   };
 }
@@ -50,5 +51,17 @@ function selectMovie(id) {
   return {
     type: moviesConstants.SELECT_MOVIE,
     id
+  };
+}
+
+function getTop5Movies() {
+  const setTop5Movies = movies => ({
+    type: moviesConstants.SET_TOP_5_MOVIES,
+    movies
+  });
+  return dispatch => {
+    moviesService.getTop5().then(res => {
+      dispatch(setTop5Movies(res.data.movies));
+    });
   };
 }

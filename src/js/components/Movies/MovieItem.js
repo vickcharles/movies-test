@@ -12,34 +12,49 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import { moviesActions } from "../../actions/movies.actions";
 
-const MovieItem = ({ movie }) => {
+const MovieItem = ({ movie, action }) => {
   const dispatch = useDispatch();
   const { deleteMovie, selectMovie } = moviesActions;
   const selectedMovie = useSelector(state => state.movies.selectedMovie);
+  const isMovieSelected = !action && selectedMovie.id === movie.id
 
-  const isMovieSelected = selectedMovie.id === movie.id;
+  const avatarStyle = action
+    ? { width: "100px", height: "100px", marginRight: "20px" }
+    : {};
+
+  const onSelectMovie = id => {
+    if (!action) {
+      dispatch(selectMovie(id));
+    }
+  };
 
   return (
     <ListItem
-      button
+      button={!action}
       className={`movie-item ${
         isMovieSelected ? "item-primary" : "item-secondary"
       }`}
-      onClick={() => dispatch(selectMovie(movie.id))}
+      onClick={() => onSelectMovie(movie.id)}
     >
-      <ListItemAvatar>
-        <Avatar src={movie.image} />
+      <ListItemAvatar className="mr-small">
+        <Avatar src={movie.image} style={avatarStyle} />
       </ListItemAvatar>
-      <ListItemText className="item-title" primary={movie.title} secondary={movie.relaseDate} />
-      { isMovieSelected && <ListItemSecondaryAction>
-        <IconButton
-          edge="end"
-          aria-label="delete"
-          onClick={() => dispatch(deleteMovie(movie.id))}
-        >
-          <DeleteIcon className="delete-button"/>
-        </IconButton>
-      </ListItemSecondaryAction>}
+      <ListItemText
+        className={`item-title ${action ? "large-title" : ""}`}
+        primary={movie.title}
+        secondary={movie.relaseDate || movie.release }
+      />
+      {isMovieSelected && !action && (
+        <ListItemSecondaryAction>
+          <IconButton
+            edge="end"
+            aria-label="delete"
+            onClick={() => dispatch(deleteMovie(movie.id))}
+          >
+            <DeleteIcon className="delete-button" />
+          </IconButton>
+        </ListItemSecondaryAction>
+      )}
     </ListItem>
   );
 };

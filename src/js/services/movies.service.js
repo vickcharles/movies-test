@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const moviesService = {
   addMovie,
   removeMovie,
@@ -34,13 +36,5 @@ function getAllMovies() {
 }
 
 function getTop5() {
-  const requestOptions = {
-    method: "GET",
-    headers: { "Content-Type": "application/json" }
-  };
-
-  return fetch(
-    "http://www.mocky.io/v2/5dc3c053300000540034757b",
-    requestOptions
-  );
+  return axios.get("http://www.mocky.io/v2/5dc3c053300000540034757b")
 }
