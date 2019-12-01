@@ -2,7 +2,8 @@ import { moviesConstants } from "../constants/movies.constants";
 
 export const moviesActions = {
   addMovie,
-  deleteMovie
+  deleteMovie,
+  selectMovie
 };
 
 function addMovie(movie) {
@@ -14,7 +15,14 @@ function addMovie(movie) {
 
 function deleteMovie(id) {
   return {
-    type: moviesConstants.ADD_MOVIE,
+    type: moviesConstants.DELETE_MOVIE,
+    id
+  };
+}
+
+function selectMovie(id) {
+  return {
+    type: moviesConstants.SELECT_MOVIE,
     id
   };
 }

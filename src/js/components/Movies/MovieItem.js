@@ -9,22 +9,37 @@ import {
 } from "@material-ui/core";
 
 import DeleteIcon from "@material-ui/icons/Delete";
-import BeachAccessIcon from "@material-ui/icons/BeachAccess";
+import { useDispatch, useSelector } from "react-redux";
+import { moviesActions } from "../../actions/movies.actions";
 
-const MovieItem = () => {
+const MovieItem = ({ movie }) => {
+  const dispatch = useDispatch();
+  const { deleteMovie, selectMovie } = moviesActions;
+  const selectedMovie = useSelector(state => state.movies.selectedMovie);
+
+  const isMovieSelected = selectedMovie.id === movie.id;
+
   return (
-    <ListItem button className="movie-item">
+    <ListItem
+      button
+      className={`movie-item ${
+        isMovieSelected ? "item-primary" : "item-secondary"
+      }`}
+      onClick={() => dispatch(selectMovie(movie.id))}
+    >
       <ListItemAvatar>
-        <Avatar>
-          <BeachAccessIcon />
-        </Avatar>
+        <Avatar src={movie.image} />
       </ListItemAvatar>
-      <ListItemText primary="Vacation" secondary="July 20, 2014" />
-      <ListItemSecondaryAction>
-        <IconButton edge="end" aria-label="delete">
-          <DeleteIcon />
+      <ListItemText primary={movie.title} secondary={movie.relaseDate} />
+      { isMovieSelected && <ListItemSecondaryAction>
+        <IconButton
+          edge="end"
+          aria-label="delete"
+          onClick={() => dispatch(deleteMovie(movie.id))}
+        >
+          <DeleteIcon className="delete-button"/>
         </IconButton>
-      </ListItemSecondaryAction>
+      </ListItemSecondaryAction>}
     </ListItem>
   );
 };

@@ -6,7 +6,7 @@ import SingleImage from "../components/Movies/SingleMovie"
 const HomePage = () => {
   return (
     <Container>
-      <Grid container spacing={3}>
+      <Grid container>
         <Grid item xs={3}>
           <MoviesList />
         </Grid>
