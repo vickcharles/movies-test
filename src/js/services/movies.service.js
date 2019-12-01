@@ -1,6 +1,7 @@
 export const userService = {
   addMovie,
   removeMovie,
+  getAllMovies,
   getTop5
 };
 
@@ -21,6 +22,15 @@ function removeMovie(id) {
   };
 
   return fetch("/movies/remove", requestOptions);
+}
+
+function getAllMovies() {
+  const requestOptions = {
+    method: "GET",
+    headers: { "Content-Type": "application/json" }
+  };
+
+  return fetch("/movies", requestOptions);
 }
 
 function getTop5() {
