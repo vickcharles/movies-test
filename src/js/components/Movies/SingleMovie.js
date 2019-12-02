@@ -22,7 +22,7 @@ const SingleMovie = () => {
         </Grid>
         <Grid xs="12" md={8}>
           <Typography>Description</Typography>
-          <Typography variant="subtitle1" gutterBottom>
+          <Typography paragraph={true} variant="subtitle1" gutterBottom>
             {selectedMovie.description}
           </Typography>
           <Typography className="mt-small">Relase Date</Typography>

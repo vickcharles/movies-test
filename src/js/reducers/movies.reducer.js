@@ -2,7 +2,9 @@ import { moviesConstants } from "../constants/movies.constants";
 
 const initialState = {
   movies: [],
-  selectedMovie: {},
+  selectedMovie: {
+    id: ""
+  },
   top5Movies: [],
   isRequesting: false
 };
@@ -31,8 +33,6 @@ export const movies = (state = initialState, action) => {
       return {
        ...state,
         movies: [...state.movies, ...action.movies],
-        selectedMovie:
-          action.movies.length >= 0 && action.movies[0]
       };
     case moviesConstants.SET_TOP_5_MOVIES:
       return {

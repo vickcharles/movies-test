@@ -51,6 +51,10 @@ class AddMovieForm extends React.Component {
       formErrors.description = "this field is required";
     }
 
+    if (description.length > 70) {
+      formErrors.description = "max text lenght is 70";
+    }
+
     if (image === "") {
       formErrors.image = "please upload a new image";
     }
