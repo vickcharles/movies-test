@@ -105,7 +105,7 @@ class AddMovieForm extends React.Component {
       <div>
         <form noValidate autoComplete="off">
           <Grid container spacing={3}>
-            <Grid item md={6}>
+            <Grid item xs={12} md={6}>
               <TextField
                 id="filled-basic"
                 fullWidth={true}
@@ -118,7 +118,7 @@ class AddMovieForm extends React.Component {
                 variant="filled"
               />
             </Grid>
-            <Grid item md={12}>
+            <Grid item xs={12} md={12}>
               <TextField
                 id="filled-basic"
                 fullWidth={true}
@@ -132,7 +132,7 @@ class AddMovieForm extends React.Component {
                 variant="filled"
               />
             </Grid>
-            <Grid item md={12}>
+            <Grid item xs={12} md={12}>
               <DatePicker
                 selected={this.state.relaseDate}
                 className="custom-date-picker"
@@ -154,7 +154,7 @@ class AddMovieForm extends React.Component {
                 </Typography>
               )}
             </Grid>
-            <Grid item md={12}>
+            <Grid item xs={12} md={12}>
               <ImageUpload image={image => this.setImage(image)} />
               <br />
               {this.state.errors.image && (
@@ -169,7 +169,7 @@ class AddMovieForm extends React.Component {
                 </Typography>
               )}
             </Grid>
-            <Grid item md={12} style={{ textAlign: "right" }}>
+            <Grid item xs={12} md={12} style={{ textAlign: "right" }}>
               <Button
                 variant="contained"
                 color="primary"
