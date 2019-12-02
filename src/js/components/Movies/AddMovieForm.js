@@ -40,7 +40,6 @@ class AddMovieForm extends React.Component {
   };
 
   validate(values) {
-    console.log(values);
     const formErrors = {};
     const { title, description, image, relaseDate } = values;
     if (title === "") {
@@ -87,7 +86,6 @@ class AddMovieForm extends React.Component {
     };
 
     const formErrors = this.validate(movieToAdd);
-    console.log(formErrors);
     this.setState({ errors: formErrors }, () => {
       const errorsArray = Object.values(this.state.errors);
       const isError = errorsArray.some(value => value);

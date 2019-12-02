@@ -6,7 +6,7 @@ import SectionTitle from "../components/common/SectionTitle";
 const NewMoview = () => {
   return (
     <Grid container>
-      <Grid md={6} className="m-auto">
+      <Grid item md={6} className="m-auto">
         <SectionTitle text="Add a new Movie" />
         <div className="section mt-xsmall">
           <AddMovieForm />

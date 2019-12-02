@@ -6,21 +6,21 @@ import { useSelector } from "react-redux";
 const SingleMovie = () => {
   const selectedMovie = useSelector(state => state.movies.selectedMovie) || {}
   return (
-    <Grid class="single-movie">
-      <Grid>
+    <div className="single-movie">
+      <div>
         {" "}
-        <div class="title">
+        <div className="title">
           <Typography>{selectedMovie.title}</Typography>
         </div>
-      </Grid>
+      </div>
       <Grid container className="mt-small">
-        <Grid xs="12" md={4}>
+        <Grid item xs={12} md={4}>
           <Avatar
             className="avatar"
             src={selectedMovie.image}
           />
         </Grid>
-        <Grid xs="12" md={8}>
+        <Grid item xs={12} md={8}>
           <Typography>Description</Typography>
           <Typography paragraph={true} variant="subtitle1" gutterBottom>
             {selectedMovie.description}
@@ -31,7 +31,7 @@ const SingleMovie = () => {
           </Typography>
         </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 };
 

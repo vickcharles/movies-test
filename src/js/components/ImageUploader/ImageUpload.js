@@ -21,7 +21,6 @@ class ImageUpload extends React.Component {
   }
 
   handleImageChange = e => {
-    console.log(e.target.files);
     e.preventDefault();
     let file = e.target.files[0];
 
@@ -54,7 +53,7 @@ class ImageUpload extends React.Component {
               UPLOAD IMAGE
             </Button>
           )}
-          <Grid xs={12} md={9}>
+          <Grid xs={12} md={9} item>
             {this.state.file && (
               <Avatar
                 alt="Remy Sharp"

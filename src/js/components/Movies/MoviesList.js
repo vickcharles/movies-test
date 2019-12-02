@@ -11,8 +11,11 @@ const MoviesList = props => {
     <div className="movie-list-wrapper">
       {props.showTitle && <SectionTitle text="Movies" />}
       <List className="movies-list">
-        {(props.movies.length === 0 ? Array.from(new Array(4)) : props.movies).map(movie => (
-          <MovieItem movie={movie} action={props.onlyView} />
+        {(props.movies.length === 0
+          ? Array.from(new Array(4))
+          : props.movies
+        ).map((movie, i) => (
+          <MovieItem movie={movie} action={props.onlyView} key={i}/>
         ))}
       </List>
     </div>

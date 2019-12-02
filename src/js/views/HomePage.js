@@ -32,7 +32,7 @@ const HomePage = () => {
             </Grid>
             <Grid item xs={12} md={9}>
               <Grid container>
-                <Grid xs={12} md={11} className="section">
+                <Grid item xs={12} md={11} className="section">
                   <SingleImage />
                 </Grid>
               </Grid>

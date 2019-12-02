@@ -36,7 +36,6 @@ function setMovies(movies) {
 function getAllMovies() {
   return dispatch => {
     moviesService.getAllMovies().then(res => {
-      console.log(res)
       dispatch(setMovies(res.movies));
     });
   };
@@ -73,9 +72,13 @@ function getTop5Movies() {
 
   return dispatch => {
     dispatch(setTop5MoviesRequest());
-    moviesService.getTop5().then(res => {
-      console.log(res)
-      dispatch(setTop5Movies(res.data.movies));
-    });
+    moviesService
+      .getTop5()
+      .then(res => {
+        dispatch(setTop5Movies(res.data.movies));
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 }

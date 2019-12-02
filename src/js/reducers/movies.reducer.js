@@ -33,6 +33,7 @@ export const movies = (state = initialState, action) => {
       return {
        ...state,
         movies: [...state.movies, ...action.movies],
+        selectedMovie: action.movies[0] || {}
       };
     case moviesConstants.SET_TOP_5_MOVIES:
       return {
