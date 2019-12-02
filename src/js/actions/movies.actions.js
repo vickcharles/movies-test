@@ -5,16 +5,20 @@ export const moviesActions = {
   addMovie,
   deleteMovie,
   getTop5Movies,
+  setMovies,
   selectMovie,
-  getAllMovies
+  getAllMovies,
+  addMovieSucess
 };
 
-function addMovie(movie) {
-  const addMovieSucess = movie => ({
+function addMovieSucess(movie) {
+  return {
     type: moviesConstants.ADD_MOVIE,
     movie
-  });
+  };
+}
 
+function addMovie(movie) {
   return async dispatch => {
     moviesService.addMovie(movie).then(() => {
       dispatch(addMovieSucess(movie));
@@ -22,14 +26,17 @@ function addMovie(movie) {
   };
 }
 
-function getAllMovies() {
-  const setMovies = movies => ({
+function setMovies(movies) {
+  return {
     type: moviesConstants.SET_MOVIES,
     movies
-  });
+  };
+}
 
+function getAllMovies() {
   return dispatch => {
     moviesService.getAllMovies().then(res => {
+      console.log(res)
       dispatch(setMovies(res.movies));
     });
   };
@@ -61,13 +68,13 @@ function getTop5Movies() {
   });
 
   const setTop5MoviesRequest = () => ({
-    type: moviesConstants.SET_TOP_5_MOVIES_REQUEST,
+    type: moviesConstants.SET_TOP_5_MOVIES_REQUEST
   });
-
 
   return dispatch => {
     dispatch(setTop5MoviesRequest());
     moviesService.getTop5().then(res => {
+      console.log(res)
       dispatch(setTop5Movies(res.data.movies));
     });
   };
